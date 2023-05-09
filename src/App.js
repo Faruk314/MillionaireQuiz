@@ -88,14 +88,12 @@ function App() {
         }
       );
 
-      console.log(allQuestions);
-
       setQuestionsAnswers([...allQuestions]);
       setAnswersArray(allQuestions[currentQuestion - 1].answers);
     };
 
     fetchQuestions();
-  }, [gameState]);
+  }, [currentQuestion, gameState]);
 
   const askPeopleHandler = () => {
     setAskPeopleModal(true);
@@ -190,13 +188,10 @@ function App() {
   const checkCorrectHandler = (answer, index) => {
     setIndex(index);
     setIsTimeOut(true);
-    console.log(answer);
+
     let amount = questions.find(
       (question) => question.id === currentQuestion
     ).amount;
-    console.log(amount);
-
-    console.log(amount);
 
     if (answer.correct === true) {
       setAmountWon(amount);
